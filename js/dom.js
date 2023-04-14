@@ -407,22 +407,22 @@ $linkEventos.addEventListener("click", (e) => {
 /*
  */
 /* **********    DOM: Delegación de Eventos    ********** */
-/* function flujoEventos(e) {
-  console.log(
-    `Hola te saluda ${this} el click lo originó ${e.target.className}`
-  );
-  //e.stopPropagation();
+function flujoEventos(e) {
+	console.log(
+		`Hola te saluda ${this} el click lo originó ${e.target.className}`
+	);
+	//e.stopPropagation();
 }
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".eventos-flujo div")) {
-    flujoEventos(e);
-  }
-  if (e.target.matches(".eventos-flujo a")) {
-    alert("Hola soy tu amigo y docente digital... Jonathan MirCha");
-    e.preventDefault();
-    //e.stopPropagation();
-  }
-}); */
+	if (e.target.matches(".eventos-flujo div")) {
+		flujoEventos(e);
+	}
+	if (e.target.matches(".eventos-flujo a")) {
+		alert("Hola soy tu amigo y docente digital... Jonathan MirCha");
+		e.preventDefault();
+		//e.stopPropagation();
+	}
+});
 /*
  */
 /* **********    BOM: Propiedades y Eventos    ********** */
