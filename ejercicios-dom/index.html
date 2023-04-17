@@ -19,24 +19,80 @@
 			rel="stylesheet"
 			href="./css/styles.css"
 		/>
+		<link
+			href="dist/hamburgers.css"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
-		<nav class="navbar">
-			<div class="name">Sitio web</div>
-			<div class="menu-icon"><i class="fa-solid fa-bars"></i></div>
-			<div class="menu inactive">
-				<a>Home</a>
-				<a>Sección 1</a>
-				<a>Sección 2</a>
-				<a>Sección 3</a>
-			</div>
-		</nav>
+		<header>
+			<div class="name">Web</div>
+			<nav class="desktop-navbar">
+				<a href="#">Seccion 1</a>
+				<a href="#section2">Sección 2</a>
+				<a href="#section3">Sección 3</a>
+				<a href="#section4">Sección 4</a>
+				<a href="#section5">Sección 5</a>
+			</nav>
+		</header>
+		<div class="menu-btn">
+			<i class="fa-solid fa-bars open-icon"></i>
+			<i class="fa-solid fa-xmark close-icon closed"></i>
+		</div>
+		<aside>
+			<nav class="mobile-navbar">
+				<a href="#">Reloj</a>
+				<a href="#section2">Sección 2</a>
+				<a href="#section3">Sección 3</a>
+				<a href="#section4">Sección 4</a>
+				<a href="#section5">Sección 5</a>
+			</nav>
+		</aside>
 		<main>
-			<section class="container">Home</section>
-			<section class="container">Sección 1</section>
-			<section class="container">Sección 2</section>
-			<section class="container">Sección 3</section>
+			<section
+				id="section1"
+				class="container"
+			>
+				<h2>Reloj y Alarma</h2>
+				<div class="clock"></div>
+				<div class="clock-buttons">
+					<button class="clock-init">Iniciar Reloj</button>
+					<button class="clock-stop">Parar Reloj</button>
+				</div>
+				<div class="clock-buttons">
+					<button class="alarm-init">Iniciar Alarma</button>
+					<button class="alarm-stop">Parar Alarma</button>
+				</div>
+			</section>
+
+			<section
+				id="section2"
+				class="container"
+			>
+				<h2>Sección 2</h2>
+			</section>
+			<section
+				id="section3"
+				class="container"
+			>
+				<h2>Sección 3</h2>
+			</section>
+			<section
+				id="section4"
+				class="container"
+			>
+				<h2>Sección 4</h2>
+			</section>
+			<section
+				id="section5"
+				class="container"
+			>
+				<h2>Sección 5</h2>
+			</section>
 		</main>
-		<script src="./js/main.js"></script>
+		<script
+			src="./js/index-dom.js"
+			type="module"
+		></script>
 	</body>
 </html>
