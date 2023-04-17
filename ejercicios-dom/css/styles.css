@@ -121,16 +121,25 @@ header {
 #section1 {
 	background-color: var(--cream);
 }
+.clock {
+	background-color: var(--light-orange);
+	width: 200px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	margin: 20px auto;
+	border: solid 2px var(--black);
+}
 .clock-buttons {
 	margin-top: 30px;
 }
 .clock-buttons button {
-	background-color: var(--main-red);
 	padding: 10px;
 	border-radius: 10px;
 	width: 120px;
-	border: none;
-	color: white;
+	background-color: var(--orange);
 }
 
 /* Media Query**********************/
