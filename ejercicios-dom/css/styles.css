@@ -117,7 +117,7 @@ header {
 	display: none;
 }
 
-/* Section 1 ********************************/
+/* Clock and music ********************************/
 #section1 {
 	background-color: var(--cream);
 }
@@ -140,6 +140,22 @@ header {
 	border-radius: 10px;
 	width: 120px;
 	background-color: var(--orange);
+}
+
+/* Eventos del Teclado ************************************/
+.stage {
+	display: flex;
+	min-height: 50vh;
+	min-width: 80vw;
+	background-color: var(--transparent-black);
+	margin-top: 20px;
+}
+.ball {
+	width: 4rem;
+	height: 4rem;
+	margin: auto;
+	background-color: var(--orange);
+	border-radius: 50%;
 }
 
 /* Media Query**********************/
