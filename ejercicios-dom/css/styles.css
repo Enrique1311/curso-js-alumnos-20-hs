@@ -4,6 +4,7 @@
 	--light-orange: rgb(255, 196, 0);
 	--cream: rgb(224, 222, 222);
 	--black: rgb(0, 0, 0);
+	--white: rgb(255, 255, 255);
 	--transparent-black: rgb(0, 0, 0, 0.6);
 }
 * {
@@ -118,9 +119,6 @@ header {
 }
 
 /* Clock and music ********************************/
-#section1 {
-	background-color: var(--cream);
-}
 .clock {
 	background-color: var(--light-orange);
 	width: 200px;
@@ -147,7 +145,7 @@ header {
 	display: flex;
 	min-height: 50vh;
 	min-width: 80vw;
-	background-color: var(--transparent-black);
+	background-color: var(--cream);
 	margin-top: 20px;
 }
 .ball {
@@ -156,6 +154,75 @@ header {
 	margin: auto;
 	background-color: var(--orange);
 	border-radius: 50%;
+}
+
+/* Scroll Top Buttom *****************************/
+.scroll-top-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	border-radius: 50%;
+	border: none;
+	bottom: 10px;
+	right: 70px;
+	background-color: var(--orange);
+	z-index: 300;
+	font-size: 24px;
+	transition: all 0.5s ease-out;
+}
+.scroll-top-btn:hover {
+	background-color: black;
+	color: var(--light-orange);
+}
+.hidden {
+	visibility: hidden;
+	opacity: 0;
+}
+
+/* Change Theme Buttom *****************************/
+.theme-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	border-radius: 50%;
+	border: none;
+	bottom: 10px;
+	left: 10px;
+	background-color: var(--orange);
+	z-index: 300;
+	font-size: 24px;
+	transition: all 0.5s ease-out;
+}
+.theme-btn:hover {
+	background-color: black;
+	color: var(--light-orange);
+}
+.light-theme {
+	background-color: var(--white);
+	color: var(--black);
+	transition: 0.5s;
+}
+.dark-theme {
+	background-color: var(--black);
+	color: var(--white);
+	transition: 0.5s;
+}
+.sun-icon,
+.moon-icon {
+	display: block;
+	transition: all 0.5s;
+}
+.inactive {
+	display: none;
+	transition: all 0.5s;
 }
 
 /* Media Query**********************/

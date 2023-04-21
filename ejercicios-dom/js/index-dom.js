@@ -92,17 +92,56 @@ function moveBall(e) {
 
 document.addEventListener("keydown", moveBall);
 
-// Cuenta Regresiva ************************************************
-const $countdown = document.querySelector(".countdown");
-const countdownDate = new Date(limitDate).getTime();
-function countdown() {
-	let countdownTime = setInterval(() => {
-		let now = new Date().getTime();
-		let limitTime = countdownDate - now;
-		let days, hours, minutes, seconds;
+// Scroll Top Button ************************************
+function scrollToTop() {
+	const $scrollTopBtn = document.querySelector(".scroll-top-btn");
+	let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	if (scrollTop > 10) {
+		$scrollTopBtn.classList.remove("hidden");
+	} else {
+		$scrollTopBtn.classList.add("hidden");
+	}
+}
+window.addEventListener("scroll", scrollToTop);
+document.addEventListener("click", (e) => {
+	window.scrollTo({ brehavior: "smooth", top: 0 });
+});
 
-		$countdown.innerHTML = `Faltan ${days} días ${hours} horas ${minutes} minutos ${seconds} segundos para ${limitTime}`;
-	}, 1000);
+// Dark Theme *******************************************
+const $themeBtn = document.querySelector(".theme-btn");
+const $mainContext = document.querySelector(".main-context");
+const $sunIcon = document.querySelector(".sun-icon");
+const $moonIcon = document.querySelector(".moon-icon");
+
+function lightMode() {
+	$mainContext.classList.remove("dark-theme");
+	$mainContext.classList.add("light-theme");
+	$moonIcon.classList.remove("inactive");
+	$sunIcon.classList.add("inactive");
+	localStorage.setItem("theme", "light");
 }
 
-countdown();
+function darkMode() {
+	$mainContext.classList.remove("light-theme");
+	$mainContext.classList.add("dark-theme");
+	$sunIcon.classList.remove("inactive");
+	$moonIcon.classList.add("inactive");
+	localStorage.setItem("theme", "dark");
+}
+
+$themeBtn.addEventListener("click", () => {
+	if (localStorage.getItem("theme") === "light") {
+		darkMode();
+	} else {
+		lightMode();
+	}
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+	if (localStorage.getItem("theme") === "light") {
+		lightMode();
+	}
+	if (localStorage.getItem("theme") === "dark") {
+		darkMode();
+	}
+});
