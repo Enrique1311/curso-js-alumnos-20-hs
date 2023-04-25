@@ -93,8 +93,9 @@ function moveBall(e) {
 document.addEventListener("keydown", moveBall);
 
 // Scroll Top Button ************************************
+const $scrollTopBtn = document.querySelector(".scroll-top-btn");
+
 function scrollToTop() {
-	const $scrollTopBtn = document.querySelector(".scroll-top-btn");
 	let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	if (scrollTop > 10) {
 		$scrollTopBtn.classList.remove("hidden");
@@ -103,7 +104,7 @@ function scrollToTop() {
 	}
 }
 window.addEventListener("scroll", scrollToTop);
-document.addEventListener("click", (e) => {
+$scrollTopBtn.addEventListener("click", (e) => {
 	window.scrollTo({ brehavior: "smooth", top: 0 });
 });
 
@@ -145,3 +146,132 @@ document.addEventListener("DOMContentLoaded", () => {
 		darkMode();
 	}
 });
+
+// Ventana emergente
+const $openWindowBtn = document.querySelector(".open-window-btn");
+const $closeWindowBtn = document.querySelector(".close-window-btn");
+let ventana;
+function openWindow() {
+	ventana = window.open(
+		"https://sp.booking.com/index.html?aid=1535089&label=esar-edge-ntp-topsites-curate-ana",
+		"ventana",
+		"width=600,height=400"
+	);
+}
+
+function closeWindow() {
+	ventana.window.close();
+}
+
+$openWindowBtn.addEventListener("click", openWindow);
+$closeWindowBtn.addEventListener("click", closeWindow);
+
+// Detección de Dispositivos
+const $id = document.querySelector("#user-device");
+const isMobile = {
+	android: () => navigator.userAgent.match(/android/i),
+	ios: () => navigator.userAgent.match(/iphone|ipad|ipod/i),
+	any: function () {
+		return this.android() || this.ios();
+	},
+};
+const isDesktop = {
+	linux: () => navigator.userAgent.match(/linux/i),
+	mac: () => navigator.userAgent.match(/mac os/i),
+	windows: () => navigator.userAgent.match(/windows nt/i),
+	any: function () {
+		return this.linux() || this.mac() || this.windows();
+	},
+};
+const isBrowser = {
+	chrome: () => navigator.userAgent.match(/chrome/i),
+	safari: () => navigator.userAgent.match(/safari/i),
+	firefox: () => navigator.userAgent.match(/firefox/i),
+	opera: () => navigator.userAgent.match(/opera|opera mini/i),
+	ie: () => navigator.userAgent.match(/msie|iemobile/i),
+	edge: () => navigator.userAgent.match(/edge/i),
+	any: function () {
+		return (
+			this.chrome() ||
+			this.safari() ||
+			this.firefox() ||
+			this.opera() ||
+			this.ie() ||
+			this.edge()
+		);
+	},
+};
+$id.innerHTML = `<ul>
+<li>User Agent: <b>${navigator.userAgent}</b></li>
+<li>Plataforma: <b>${isMobile.any() ? isMobile.any() : isDesktop.any()}</b></li>
+<li>Navegador: <b>${isBrowser.any()}</b></li></ul>`;
+
+// Contenido exclusivo para cada dispositivo
+if (isBrowser.chrome()) {
+	$id.innerHTML += `<p><mark>Esto sólo se ve en Chrome.</mark></p>`;
+}
+if (isBrowser.safari()) {
+	$id.innerHTML += `<p><mark>Esto sólo se ve en Safari.</mark></p>`;
+}
+if (isBrowser.firefox()) {
+	$id.innerHTML += `<p><mark>Esto sólo se ve en Firefox.</mark></p>`;
+}
+if (isBrowser.opera()) {
+	$id.innerHTML += `<p><mark>Esto sólo se ve en Opera.</mark></p>`;
+}
+if (isBrowser.ie()) {
+	$id.innerHTML += `<p><mark>Esto sólo se ve en Chrome.</mark></p>`;
+}
+if (isBrowser.edge()) {
+	$id.innerHTML += `<p><mark>Esto sólo se ve en Edge.</mark></p>`;
+}
+
+// Redirecciones
+if (isMobile.android()) {
+	const $div = document.createElement("div");
+	window.location.href = "https://www.youtube.com/";
+}
+
+// Estado de la red
+const isOnline = () => {
+	const $div = document.createElement("div");
+	if (navigator.onLine) {
+		$div.textContent = "Conección reestablecida";
+		$div.classList.add("online");
+		$div.classList.remove("offline");
+	} else {
+		$div.textContent = "Conexión perdida";
+		$div.classList.add("offline");
+		$div.classList.remove("online");
+	}
+	document.body.insertAdjacentElement("afterbegin", $div);
+	setTimeout(() => document.body.removeChild($div), 2000);
+};
+window.addEventListener("online", (e) => isOnline());
+window.addEventListener("offline", () => isOnline());
+
+// Detección de la cámara web
+const $startCameraBtn = document.querySelector(".start-webcam-btn");
+
+function startWebcam() {
+	const $video = document.querySelector(".webcam");
+
+	if (navigator.mediaDevices.getUserMedia) {
+		navigator.mediaDevices
+			.getUserMedia({ video: true, audio: true })
+			.then((strem) => {
+				$video.srcObject = strem;
+				$video.play();
+			})
+			.catch((error) => {
+				// $video.insertAdjacentHTML(
+				// 	"afterend",
+				// 	<p>
+				// 		<mark>${error}</mark>
+				// 	</p>
+				// );
+				console.warn(`Error!: ${error}`);
+			});
+	}
+}
+$startCameraBtn.addEventListener("click", startWebcam);

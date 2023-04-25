@@ -200,6 +200,7 @@ header {
 	z-index: 300;
 	font-size: 24px;
 	transition: all 0.5s ease-out;
+	cursor: pointer;
 }
 .theme-btn:hover {
 	background-color: black;
@@ -225,6 +226,24 @@ header {
 	transition: all 0.5s;
 }
 
+/* Conexión Status *****************************/
+.online,
+.offline {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	z-index: 1000;
+	padding: 20px;
+	align-self: center;
+	font-weight: bold;
+	text-align: center;
+	background-color: rgb(16, 235, 16);
+	color: white;
+}
+.offline {
+	background-color: var(--main-red);
+}
+
 /* Media Query**********************/
 @media screen and (min-width: 650px) {
 	header {
@@ -238,5 +257,8 @@ header {
 	}
 	.menu-btn {
 		display: none;
+	}
+	.scroll-top-btn {
+		right: 10px;
 	}
 }
