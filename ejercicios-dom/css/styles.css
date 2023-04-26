@@ -89,7 +89,7 @@ header {
 	position: fixed;
 	z-index: 400;
 	top: 0;
-	transform: translate(100%, 100%);
+	transform: translate(100%, 0);
 	transition: 0.3s;
 }
 .mobile-navbar.active {
@@ -224,6 +224,42 @@ header {
 .inactive {
 	display: none;
 	transition: all 0.5s;
+}
+
+/* Webcam *************************************/
+#section5 {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+}
+.webcam {
+	width: 100%;
+}
+
+/* Search Filter *******************************/
+.card-filter {
+	margin: 30px;
+}
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 30px;
+}
+.card {
+	background-color: var(--orange);
+	color: var(--white);
+	transition: all.5s ease-out;
+}
+.card img {
+	width: 100%;
+	height: auto;
+}
+.card figcaption {
+	padding: 20px;
+}
+.filter {
+	display: none;
 }
 
 /* Conexión Status *****************************/

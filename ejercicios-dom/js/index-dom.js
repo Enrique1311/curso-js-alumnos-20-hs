@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-// Ventana emergente
+// Ventana emergente ****************************************
 const $openWindowBtn = document.querySelector(".open-window-btn");
 const $closeWindowBtn = document.querySelector(".close-window-btn");
 let ventana;
@@ -166,7 +166,7 @@ function closeWindow() {
 $openWindowBtn.addEventListener("click", openWindow);
 $closeWindowBtn.addEventListener("click", closeWindow);
 
-// Detección de Dispositivos
+// Detección de Dispositivos **********************************
 const $id = document.querySelector("#user-device");
 const isMobile = {
 	android: () => navigator.userAgent.match(/android/i),
@@ -226,13 +226,13 @@ if (isBrowser.edge()) {
 	$id.innerHTML += `<p><mark>Esto sólo se ve en Edge.</mark></p>`;
 }
 
-// Redirecciones
+// Redirecciones **********************************************
 if (isMobile.android()) {
 	const $div = document.createElement("div");
 	window.location.href = "https://www.youtube.com/";
 }
 
-// Estado de la red
+// Estado de la red *******************************************
 const isOnline = () => {
 	const $div = document.createElement("div");
 	if (navigator.onLine) {
@@ -250,7 +250,7 @@ const isOnline = () => {
 window.addEventListener("online", (e) => isOnline());
 window.addEventListener("offline", () => isOnline());
 
-// Detección de la cámara web
+// Detección de la cámara web **********************************
 const $startCameraBtn = document.querySelector(".start-webcam-btn");
 
 function startWebcam() {
@@ -264,14 +264,45 @@ function startWebcam() {
 				$video.play();
 			})
 			.catch((error) => {
-				// $video.insertAdjacentHTML(
-				// 	"afterend",
-				// 	<p>
-				// 		<mark>${error}</mark>
-				// 	</p>
-				// );
-				console.warn(`Error!: ${error}`);
+				$video.insertAdjacentHTML(
+					"beforebegin",
+					`<p class="error"><mark>${error}</mark></p>`
+				);
 			});
 	}
 }
 $startCameraBtn.addEventListener("click", startWebcam);
+
+// Geolocalización ******************************************
+const $geolocation = document.querySelector("#geolocation");
+const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
+
+const success = (position) => {
+	$geolocation.innerHTML = `
+	<p>Tu posición es:</p>
+	<ul>
+		<li>Latitud:<b>${position.coords.latitude}</b></li>
+		<li>Longitud:<b>${position.coords.longitude}</b></li>
+		<li>Presición:<b>${position.coords.accuracy}</b> metros</li>
+	</ul>
+	<button><a href="https://www.google.com/maps/@${position.coords.latitude},${position.coords.longitude},20z" target="_blank" rel="noopener">Ver en Google Maps<i class="fa-solid fa-location-dot"></i></a></button>
+	`;
+	console.log(position);
+};
+const error = (err) => {
+	$geolocation.innerHTML = `<p><mark>${err.message}</mark></p>`;
+	console.log(err);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+// Filtro ***************************************************
+function search(input) {
+	document.addEventListener("keyup", (e) => {
+		if (e.target.matches(input)) {
+			console.log(e.target.value);
+			document.querySelectorAll(selector).forEach((el) => {});
+		}
+	});
+}
+search();
