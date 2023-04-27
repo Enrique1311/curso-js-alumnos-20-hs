@@ -262,6 +262,15 @@ header {
 	display: none;
 }
 
+/* Sorteo Digital ******************************/
+.winner-btn {
+	background-color: var(--orange);
+	border: none;
+	padding: 5px 30px;
+	margin: 20px;
+	cursor: pointer;
+}
+
 /* Conexión Status *****************************/
 .online,
 .offline {

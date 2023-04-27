@@ -297,12 +297,27 @@ const error = (err) => {
 navigator.geolocation.getCurrentPosition(success, error, options);
 
 // Filtro ***************************************************
-function search(input) {
-	document.addEventListener("keyup", (e) => {
-		if (e.target.matches(input)) {
-			console.log(e.target.value);
-			document.querySelectorAll(selector).forEach((el) => {});
-		}
-	});
-}
-search();
+document.addEventListener("keyup", (e) => {
+	if (e.target.matches(".card-filter")) {
+		if (e.key === "Escape") e.target.value = "";
+
+		document.querySelectorAll(".card").forEach((el) => {
+			el.textContent.toLocaleLowerCase().includes(e.target.value)
+				? el.classList.remove("filter")
+				: el.classList.add("filter");
+		});
+	}
+});
+
+// Sorteo Digital ********************************************
+const $winnerBtn = document.querySelector(".winner-btn");
+
+const getWinner = () => {
+	const $players = document.querySelectorAll(".player");
+	const random = Math.floor(Math.random() * $players.length);
+	const winner = $players[random];
+
+	alert(`El ganador es: ${winner.textContent}.`);
+};
+
+$winnerBtn.addEventListener("click", getWinner);
