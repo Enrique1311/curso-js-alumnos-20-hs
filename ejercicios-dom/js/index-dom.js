@@ -321,3 +321,32 @@ const getWinner = () => {
 };
 
 $winnerBtn.addEventListener("click", getWinner);
+
+// Responsive Slider *****************************************
+const $slideContent = document.querySelectorAll(".slide-content");
+const $prevBtn = document.querySelector(".prev-button");
+const $nextBtn = document.querySelector(".next-button");
+let i = 0;
+
+const prevSlide = (e) => {
+	e.preventDefault();
+	$slideContent[i].classList.remove("active");
+	i--;
+	if (i < 0) {
+		i = $slideContent.length - 1;
+	}
+	$slideContent[i].classList.add("active");
+};
+
+const nextSlide = (e) => {
+	e.preventDefault();
+	$slideContent[i].classList.remove("active");
+	i++;
+	if (i > $slideContent.length - 1) {
+		i = 0;
+	}
+	$slideContent[i].classList.add("active");
+};
+
+$prevBtn.addEventListener("click", prevSlide);
+$nextBtn.addEventListener("click", nextSlide);
