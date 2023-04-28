@@ -1,17 +1,17 @@
-// Mobile Menu *************************************************
+// Menu *************************************************
 const $menuBtn = document.querySelector(".menu-btn");
-const $mobileNavbar = document.querySelector(".mobile-navbar");
+const $navbar = document.querySelector(".navbar");
 const $openIcon = document.querySelector(".open-icon");
 const $closeIcon = document.querySelector(".close-icon");
 
 function openCloseMenu() {
-	$mobileNavbar.classList.toggle("active");
+	$navbar.classList.toggle("active");
 	$openIcon.classList.toggle("closed");
 	$closeIcon.classList.toggle("closed");
 }
 
 $menuBtn.addEventListener("click", openCloseMenu);
-$mobileNavbar.addEventListener("click", openCloseMenu);
+$navbar.addEventListener("click", openCloseMenu);
 
 // Clock and Music **********************************************
 const $clockInit = document.querySelector(".clock-init");
@@ -350,3 +350,26 @@ const nextSlide = (e) => {
 
 $prevBtn.addEventListener("click", prevSlide);
 $nextBtn.addEventListener("click", nextSlide);
+
+// Scroll Spy *************************************
+const $sections = document.querySelectorAll("section[data-scroll-spy]");
+const cb = (entries) => {
+	console.log("entries:", entries);
+
+	entries.forEach((entry) => {
+		console.log("entry:", entry);
+		const id = entry.target.getAttribute("id");
+		if (entry.isIntersecting) {
+			document
+				.querySelector(`a[data-scroll-spy][href="#${id}"]`)
+				.classList.add("active");
+		} else {
+			document
+				.querySelector(`a[data-scroll-spy][href="#${id}"]`)
+				.classList.remove("active");
+		}
+	});
+};
+
+const observer = new IntersectionObserver(cb, { threshold: [0.5, 0.75] });
+$sections.forEach((el) => observer.observe(el));
