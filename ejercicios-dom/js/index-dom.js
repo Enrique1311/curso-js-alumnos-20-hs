@@ -373,3 +373,67 @@ const cb = (entries) => {
 
 const observer = new IntersectionObserver(cb, { threshold: [0.5, 0.75] });
 $sections.forEach((el) => observer.observe(el));
+
+// Videos inteligentes ****************************
+function smartVideo() {
+	const $videos = document.querySelectorAll("video[data-smart-video]");
+
+	const callback = (entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.play();
+			} else {
+				entry.target.pause();
+			}
+
+			// Para que cuando se cambia de página en el navegador el video se pausa
+			// y cuando se vuelve a la página del video, se reproduce desde donde estaba.
+			window.addEventListener("visibilitychange", (e) =>
+				document.visibilityState === "visible"
+					? entry.target.play()
+					: entry.target.pause()
+			);
+		});
+	};
+	const observer = new IntersectionObserver(callback, { threshold: 0.5 });
+
+	$videos.forEach((el) => observer.observe(el));
+}
+smartVideo();
+
+// Validaciones de formularios
+function contactFormValidations() {
+	const $form = document.querySelector(".contact-form");
+	const $inputs = document.querySelectorAll(".contact-form [required]");
+
+	$inputs.forEach((input) => {
+		const $span = document.createElement("span");
+		$span.id = input.name;
+		$span.textContent = input.title;
+		$span.classList.add("contact-form-error", "none");
+		input.insertAdjacentElement("afterend", $span);
+	});
+
+	document.addEventListener("keyup", (e) => {
+		if (e.target.matches(".contact-form [required]")) {
+			let pattern = e.target.pattern || e.target.dataset.pattern;
+
+			if (pattern && e.target.value !== "") {
+				let regex = new RegExp(pattern);
+				return !regex.exec(e.target.value)
+					? document.getElementById(e.target.name).classList.add("is-active")
+					: document
+							.getElementById(e.target.name)
+							.classList.remove("is-active");
+			}
+			if (!pattern) {
+				return e.target.value === ""
+					? document.getElementById(e.target.name).classList.add("is-active")
+					: document
+							.getElementById(e.target.name)
+							.classList.remove("is-active");
+			}
+		}
+	});
+}
+contactFormValidations();
