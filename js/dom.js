@@ -308,7 +308,7 @@ $newCard.querySelector("figcaption").insertAdjacentText("afterbegin", "Any"); */
 //$cards.after($newCard);
 /*
  */
-/* **********     DOM: Manejadores de Eventos, Eventos con Parámetros y Remover Eventos - #jonmircha     ********** */
+/* **********     DOM: Manejadores de Eventos, Eventos con Parámetros y Remover Eventos     ********** */
 /*
 Los eventos son los mecanismos que tenemos en JavaScript para controlar las acciones del usuario y definir el comportamiento del documento en cierto momento o cuando se cumplan ciertas condiciones.
 Las funciones que se ejecutan en un evento se llaman Event Handler (Manejador de Eventos).

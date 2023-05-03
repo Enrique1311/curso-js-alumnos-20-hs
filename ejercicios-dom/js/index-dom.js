@@ -417,6 +417,7 @@ function contactFormValidations() {
 	document.addEventListener("keyup", (e) => {
 		if (e.target.matches(".contact-form [required]")) {
 			let pattern = e.target.pattern || e.target.dataset.pattern;
+			console.log(e.target, pattern);
 
 			if (pattern && e.target.value !== "") {
 				let regex = new RegExp(pattern);
@@ -426,6 +427,7 @@ function contactFormValidations() {
 							.getElementById(e.target.name)
 							.classList.remove("is-active");
 			}
+
 			if (!pattern) {
 				return e.target.value === ""
 					? document.getElementById(e.target.name).classList.add("is-active")
@@ -435,5 +437,57 @@ function contactFormValidations() {
 			}
 		}
 	});
+
+	document.addEventListener("submit", (e) => {
+		// e.preventDefault();
+
+		const $loader = document.querySelector(".contact-form-loader");
+		const $response = document.querySelector(".contact-form-response");
+
+		$loader.classList.remove("none");
+
+		setTimeout(() => {
+			$loader.classList.add("none");
+			$response.classList.remove("none");
+			$form.reset();
+
+			setTimeout(() => {
+				$response.classList.add("none");
+			}, 2000);
+		}, 3000);
+	});
 }
 contactFormValidations();
+
+// Narrador *********************************************************
+function speechReader() {
+	const $speechSelect = document.querySelector("#speech-select"),
+		$speechTextarea = document.querySelector("#speech-text"),
+		$speechBtn = document.querySelector("#speech-btn"),
+		speechMessage = new SpeechSynthesisUtterance();
+
+	let voices = [];
+
+	document.addEventListener("DOMContentLoaded", (e) => {
+		window.speechSynthesis.addEventListener("voiceschanged", (e) => {
+			voices = window.speechSynthesis.getVoices();
+
+			voices.forEach((voice) => {
+				const $option = document.createElement("option");
+				$option.value = voice.name;
+				$option.textContent = `${voice.name} --- ${voice.lang}`;
+				$speechSelect.appendChild($option);
+			});
+		});
+	});
+
+	$speechSelect.addEventListener("change", (e) => {
+		speechMessage.voice = voices.find((voice) => voice.name === e.target.value);
+	});
+
+	$speechBtn.addEventListener("click", (e) => {
+		speechMessage.text = $speechTextarea.value;
+		window.speechSynthesis.speak(speechMessage);
+	});
+}
+speechReader();
