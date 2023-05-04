@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>CRUD API REST AJAX</title>
+	</head>
+	<body>
+		<h1>CRUD API REST AJAX</h1>
+		<section class="crud">
+			<article>
+				<h2 class="crud-title">Agregar Usuario VIP</h2>
+				<form class="crud-form">
+					<input
+						type="text"
+						name="name"
+						placeholder="Nombre"
+						required
+					/>
+					<br />
+					<br />
+					<input
+						type="text"
+						name="email"
+						placeholder="Email"
+						required
+					/>
+					<br />
+					<br />
+					<input
+						type="submit"
+						value="Enviar"
+					/>
+					<input
+						type="hidden"
+						name="action"
+					/>
+				</form>
+			</article>
+			<article>
+				<h2>Ver Usuarios</h2>
+				<table class="crud-table">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Email</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</article>
+		</section>
+		<template id="crud-template">
+			<tr>
+				<td class="name"></td>
+				<td class="email"></td>
+				<td>
+					<button class="edit-btn">Editar</button>
+					<button class="delete-btn">Eliminar</button>
+				</td>
+			</tr>
+		</template>
+		<script src="./js/crud-ajax.js"></script>
+	</body>
+</html>
