@@ -1,12 +1,6 @@
 {
   "vip-users": [
     {
-      "id": 1,
-      "name": "Carolina",
-      "email": "carolina@gmail.com",
-      "address": "La Guarda447 - Ezpeleta"
-    },
-    {
       "id": 2,
       "name": "Martina",
       "email": "martina@gmail.com"
@@ -17,9 +11,14 @@
       "email": "santiago@gmail.com"
     },
     {
-      "id": 4,
       "name": "Enrique",
-      "email": "enrique@gmail.com"
+      "email": "enrique@gmail.com",
+      "id": 4
+    },
+    {
+      "name": "Crolina",
+      "email": "caro@gmail.com",
+      "id": 5
     }
   ],
   "normal-users": [
