@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Ajax Website</title>
+		<style>
+			html {
+				box-sizing: border-box;
+				font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+					"Lucida Sans", Arial, sans-serif;
+				font-size: 16px;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: inherit;
+			}
+
+			body {
+				margin: 0;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+			}
+
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+
+			main {
+				flex-grow: 1;
+			}
+
+			.container {
+				margin: 0 2rem;
+			}
+
+			.header {
+				padding: 0.5rem;
+				background-color: rgb(81, 6, 147);
+			}
+
+			.header-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 1rem;
+			}
+
+			.logo img {
+				width: 3rem;
+				height: auto;
+			}
+
+			.menu {
+				display: flex;
+				justify-content: space-between;
+				font-size: 1.2rem;
+			}
+
+			.menu a {
+				padding: 0 1vw;
+				color: rgb(243, 247, 128);
+				text-decoration: none;
+				transition: all 0.3s ease-in-out;
+			}
+
+			.menu a:hover {
+				opacity: 0.6;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="header">
+			<section class="header-content">
+				<article class="logo">
+					<img
+						src="./assets/codigo.png"
+						alt=""
+					/>
+				</article>
+				<nav class="menu">
+					<a href="./assets/home.html">Home</a>
+					<a href="./assets/about.html">About</a>
+					<a href="./assets/services.html">Services</a>
+					<a href="./assets/contact.html">Contacts</a>
+				</nav>
+			</section>
+		</header>
+		<main class="container"></main>
+		<footer class="footer container">
+			<p><small>Devoloped by Enrique Javier Spinelli</small></p>
+		</footer>
+		<script src="./sitio-ajax.js"></script>
+	</body>
+</html>
