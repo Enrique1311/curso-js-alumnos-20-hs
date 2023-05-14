@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Incluir Html con AJAX</title>
+		<style>
+			html {
+				box-sizing: border-box;
+				font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+					"Lucida Sans", Arial, sans-serif;
+				font-size: 16px;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: inherit;
+			}
+
+			body {
+				margin: 0;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+			}
+
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+
+			main {
+				flex-grow: 1;
+			}
+
+			.container {
+				margin: 0 2rem;
+			}
+
+			.header {
+				padding: 0.5rem;
+				background-color: rgb(6, 55, 147);
+			}
+
+			.header-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 1rem;
+			}
+
+			.logo img {
+				width: 3rem;
+				height: auto;
+			}
+
+			.menu {
+				display: flex;
+				justify-content: space-between;
+				font-size: 1.2rem;
+			}
+
+			.menu a {
+				padding: 0 1vw;
+				color: rgb(18, 221, 116);
+				text-decoration: none;
+				transition: all 0.3s ease-in-out;
+			}
+
+			.menu a:hover {
+				opacity: 0.6;
+			}
+		</style>
+		<script src="assets/include-html.js"></script>
+	</head>
+	<body>
+		<div data-include="assets/header.html"></div>
+		<main class="container"></main>
+		<div data-include="assets/footer.html"></div>
+		<script src="./sitio-ajax.js"></script>
+	</body>
+</html>
