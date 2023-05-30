@@ -11,6 +11,44 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<title>Stripe con Checkout</title>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				font-size: 16px;
+				font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+			}
+			*:before,
+			*:after {
+				box-sizing: inherit;
+			}
+			#products {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			#products > * {
+				flex: 1 1 300px;
+			}
+			.product {
+				background-color: black;
+				color: white;
+				text-align: center;
+				cursor: pointer;
+				transition: all 0.5s ease-out;
+				margin: 20px;
+				padding: 10px;
+				opacity: 1;
+			}
+			.product img {
+				width: 200px;
+				height: auto;
+			}
+			.product:hover {
+				opacity: 0.8;
+				scale: 1.05;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>Stripe con Checkout</h1>
