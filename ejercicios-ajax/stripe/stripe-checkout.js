@@ -1,4 +1,4 @@
-import STRIPE_KEYS from "./stripe-keys.js";
+import STRIPE_KEYS from "./assets/stripe-keys.js";
 
 const $products = document.getElementById("products"),
 	$template = document.getElementById("product-template").content,
@@ -10,6 +10,8 @@ const $products = document.getElementById("products"),
 	};
 
 let products, prices;
+
+const moneyFormat = (num) => `$ ${num.slice(0, -2)},${num.slice(-2)}`;
 
 Promise.all([
 	fetch("https://api.stripe.com/v1/products", fetchOptions),
@@ -29,9 +31,11 @@ Promise.all([
 			$template.querySelector(".product").setAttribute("data-price", el.id);
 			$template.querySelector("img").src = productData[0].images[0];
 			$template.querySelector("img").alt = productData[0].name;
-			$template.querySelector(
-				"figcaption"
-			).innerHTML = `${productData[0].name} <br> ${el.currency} ${el.unit_amount_decimal} `;
+			$template.querySelector("figcaption").innerHTML = `<h3>${
+				productData[0].name
+			}</h3> <br> <p>${productData[0].description}</p><br> ${moneyFormat(
+				el.unit_amount_decimal
+			)} ${el.currency} `;
 
 			let $clone = document.importNode($template, true);
 			$fragment.appendChild($clone);
@@ -45,3 +49,25 @@ Promise.all([
 		let message = err.statusText || "Ocurrió un error al conectarse con Stripe";
 		$products.innerHTML = `<p>Error ${err.status}; ${message}</p>`;
 	});
+
+document.addEventListener("click", (e) => {
+	if (e.target.matches(".product *")) {
+		let price = e.target.parentElement.getAttribute("data-price");
+
+		Stripe(STRIPE_KEYS.public)
+			.redirectToCheckout({
+				lineItems: [{ price: price, quantity: 1 }],
+				mode: "payment",
+				successUrl:
+					"http://127.0.0.1:5500/ejercicios-ajax/stripe/assets/stripe-success.html",
+				cancelUrl:
+					"http://127.0.0.1:5500/ejercicios-ajax/stripe/assets/stripe-cancel.html",
+			})
+			.then((res) => {
+				console.log(res);
+				if (res.error) {
+					$products.insertAdjacentElement("afterend", res.error.message);
+				}
+			});
+	}
+});
