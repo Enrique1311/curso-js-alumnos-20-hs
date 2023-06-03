@@ -1,0 +1,71 @@
+* {
+	box-sizing: border-box;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+	font-size: 16px;
+	margin: 0;
+	margin: 0;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+a {
+	color: rgb(2, 113, 72);
+	transition: color 0.3s ease;
+}
+
+a:hover {
+	color: rgb(6, 249, 124);
+}
+
+h1 {
+	text-align: center;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.error {
+	padding: 2rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+	background-color: red;
+	color: white;
+}
+
+/* Header **************************/
+.header {
+	position: sticky;
+	top: 0;
+	padding: 0.5rem;
+	text-align: center;
+	background-color: white;
+}
+
+.header > * {
+	margin: 1rem auto;
+}
+
+/* SearchForm **********************/
+.search-form {
+	margin: auto;
+	text-align: center;
+}
+
+.search-form input {
+	margin: auto;
+	padding: 0.25rem;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+}
+
+/* Loader ***************************/
+.loader {
+	margin: auto;
+	display: block;
+	width: 8rem;
+	height: 8rem;
+}
