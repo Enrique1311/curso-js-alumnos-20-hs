@@ -10,12 +10,12 @@
 }
 
 a {
-	color: rgb(2, 113, 72);
+	color: rgb(1, 67, 43);
 	transition: color 0.3s ease;
 }
 
 a:hover {
-	color: rgb(6, 249, 124);
+	color: rgb(3, 160, 79);
 }
 
 h1 {
@@ -23,7 +23,7 @@ h1 {
 }
 
 img {
-	max-width: 100%;
+	width: 100%;
 	height: auto;
 }
 
@@ -60,6 +60,30 @@ img {
 	padding: 0.25rem;
 	border-radius: 0.5rem;
 	font-size: 1rem;
+}
+
+/* Posts ****************************/
+.grid-fluid {
+	margin: 1rem auto;
+	max-width: 90%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* PostCard *************************/
+.post-card {
+	margin: 1rem auto;
+	padding: 1rem;
+	width: 80%;
+	border-radius: 0.5rem;
+	border: solid 0.1rem gray;
+	background-color: rgb(234, 232, 232);
+}
+
+.post-card p {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
 }
 
 /* Loader ***************************/
