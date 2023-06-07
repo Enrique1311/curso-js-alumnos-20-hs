@@ -21,13 +21,21 @@ export async function Router() {
 				document.getElementById("main").innerHTML = html;
 			},
 		});
+		console.log(api.POST);
 	} else if (hash.includes("#/search")) {
 		$main.innerHTML = "<h2>Sección del buscador</h2>";
 	} else if (hash === "#/contact") {
 		$main.innerHTML = "<h2>Sección de Contacto</h2>";
 	} else {
-		$main.innerHTML =
-			"<h2>Aquí se cargará el contenido del Post seleccionado previamente</h2>";
+		await ajax({
+			url: `{api.POST}/${localStorage.getItem("wpPostId")}`,
+			cbSuccess: (post) => {
+				console.log(post);
+				// let html = "";
+				// posts.forEach((post) => (html += PostCard(post)));
+				// $main.innerHTML = html;
+			},
+		});
 	}
 
 	document.querySelector(".loader").style.display = "none";

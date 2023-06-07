@@ -10,12 +10,12 @@
 }
 
 a {
-	color: rgb(1, 67, 43);
+	color: rgb(9, 176, 114);
 	transition: color 0.3s ease;
 }
 
 a:hover {
-	color: rgb(3, 160, 79);
+	color: rgb(6, 144, 198);
 }
 
 h1 {
